@@ -3,8 +3,14 @@ package dk.stbn.p2peksperiment;
 import java.util.List;
 
 public class Node {
-    List<String> NodesLeft;
-    List<String> NodesRight;
+    List<String> phoneBookLeft;
+    List<String> phoneBookRight;
+
+    Data dataOwn = new Data();
+
+    Neighbor neighborLeft = new Neighbor();
+
+    Neighbor neighborRight = new Neighbor();
 
     String Id;
 
@@ -14,8 +20,8 @@ public class Node {
 
     Node(String ip, List<String> nodesLeft, List<String> nodesRight){
         Id = ip;
-        NodesLeft = nodesLeft;
-        NodesRight = nodesRight;
+        phoneBookLeft = nodesLeft;
+        phoneBookRight = nodesRight;
     }
 
 
@@ -25,20 +31,20 @@ public class Node {
 
     List<String> newNeighbor(List<String> newNeighborIds, String side){
         if(side.equals("left")){
-            NodesLeft.addAll(newNeighborIds);
-            return NodesLeft;
+            phoneBookLeft.addAll(newNeighborIds);
+            return phoneBookLeft;
         }else{
-            NodesRight.addAll(newNeighborIds);
-            return NodesRight;
+            phoneBookRight.addAll(newNeighborIds);
+            return phoneBookRight;
         }
     }
 
     List<String> GetPhonebookLeft(){
-        return NodesLeft; //returns nodes left or right;
+        return phoneBookLeft; //returns nodes left or right;
     }
 
     List<String> GetPhonebookRight(){
-        return NodesRight; //returns nodes left or right;
+        return phoneBookRight; //returns nodes left or right;
     }
 
     String GetData(String dataId){
